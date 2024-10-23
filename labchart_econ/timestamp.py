@@ -1,5 +1,5 @@
 """
-git timestamp data from a video
+get timestamp data from a video
 
 efish lab
 Hokkaido University
