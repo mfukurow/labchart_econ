@@ -56,6 +56,9 @@ def get_t_trig_pulse(chtrig: np.ndarray, ts: np.ndarray, thr: float = 1) -> np.n
         np.ndarray: trigger pulse time (1st item) and bool indicating trigger
                     (2nd item; True, trigger; False, not trigger)
     """
-    is_high = np.array([x > thr for x in chtrig])
-    t_trig = ts[is_high]
-    return t_trig, is_high
+    idx_pulse = np.where(chtrig > thr)[0]
+    idx_trig = np.concatenate(
+        [np.array([idx_pulse[0]]), idx_pulse[np.where(np.diff(idx_pulse) > 1)[0] + 1]]
+    )
+    t_trig = ts[idx_trig]
+    return t_trig, idx_trig
