@@ -22,12 +22,14 @@ def select_videofile() -> str:
         str: full path to the video file
     """
     print("Select a video file...")
-    filepath = tkinter.filedialog.askopenfilename()
+    filepath = tkinter.filedialog.askopenfilename(
+        filetypes=[("mp4 file", "*.mp4"), ("avi file", "*.avi")]
+    )
     print(f"{filepath} is selected!")
     return filepath
 
 
-def get_timestamp(videofilepath: str = None) -> np.ndarray:
+def read_timestamp(videofilepath: str) -> np.ndarray:
     """
     extract timestamp information from a video
 
@@ -37,9 +39,6 @@ def get_timestamp(videofilepath: str = None) -> np.ndarray:
     Returns:
         np.ndarray: a vector of timestamps
     """
-    if videofilepath is None:
-        videofilepath = select_videofile()
-
     cap = cv2.VideoCapture(videofilepath)
     timestamp = [cap.get(cv2.CAP_PROP_POS_MSEC)]
     while cap.isOpened():
@@ -73,12 +72,12 @@ def plt_ifi(timestamp: np.ndarray, is_trig: np.ndarray = None) -> None:
     plt.show()
 
 
-def is_triggerframe(timestamp: np.ndarray, intrange: list = None) -> np.ndarray:
+def get_t_trig_frame(timestamp: np.ndarray, intrange: list = None) -> np.ndarray:
     """
     make a list of triggered frame (True) and untriggered frame (False)
 
     Args:
-        timestamp (np.ndarray): timestamp acquired by get_timestamp
+        timestamp (np.ndarray): timestamp acquired by read_timestamp
         intrange (list, optional): [minimum interval, maximum interval]
 
     Returns:
@@ -105,4 +104,5 @@ interval range = """
     idx_firsttrig = np.argmax(is_trig0)
     is_trig0[idx_firsttrig - 1] = True
     is_trig = np.concatenate([np.array([False]), is_trig0])
-    return is_trig
+    t_trig = timestamp[is_trig]
+    return t_trig, is_trig

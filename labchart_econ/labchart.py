@@ -44,7 +44,7 @@ def read_chtrig(matfilepath: str, ch: int = 0) -> np.ndarray:
     return chtrig, ts
 
 
-def get_t_trig(chtrig: np.ndarray, ts: np.ndarray, thr: float = 1) -> np.ndarray:
+def get_t_trig_pulse(chtrig: np.ndarray, ts: np.ndarray, thr: float = 1) -> np.ndarray:
     """
     _summary_
 
