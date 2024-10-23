@@ -11,7 +11,6 @@ Version: 0.1.0
 import tkinter.filedialog
 import numpy as np
 from scipy.io import loadmat
-import matplotlib.pyplot as plt
 
 
 def select_matfile() -> str:
