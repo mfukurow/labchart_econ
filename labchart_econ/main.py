@@ -49,7 +49,7 @@ def sync_labchart_econ(
 
     # get t_trigframe (time information for triggered frames)
     t_frame = le.read_timestamp(videofilepath)
-    t_trigframe, is_trigframe = le.get_t_trig_frame(t_frame, intrange)
+    t_trigframe, is_trigframe = le.get_t_trigframe(t_frame, intrange)
 
     # get t_pulse (time information for trigger pulses)
     chtrig, ts = le.read_chtrig(matfilepath, ch)
