@@ -27,7 +27,8 @@ t_frame = labchart_econ.read_timestamp(vfilepath)
 ```
 t_trigframe, is_trigframe = labchart_econ.get_t_trigframe(t_frame)
 
-# you will be asked to determine "interval range" to detect the trigerred frames after displaying an inter-frame interval plot
+# you will be asked to determine "interval range" to detect the 
+# trigerred frames after displaying an inter-frame interval plot
 ```
 
 ### 5. Synchronize triggered frame time with trigger pulse time
