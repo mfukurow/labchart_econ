@@ -8,7 +8,7 @@ Email: mfukurow@gmail.com
 Version: 0.1.0
 """
 
-from scipy.io import savemat, loadmat
+from scipy.io import savemat
 import numpy as np
 import labchart_econ as le
 import os
@@ -61,9 +61,9 @@ def sync_labchart_econ(
     print(f"number of triggered frame: {n_trigframe}")
     print(f"number of trigger pulse: {n_pulse}")
     if n_trigframe == n_pulse:
-        print("Congraturations!")
+        print("Congratulations!")
     else:
-        print("Numbers are different. Something was wrong...")
+        print("Numbers are different. Something wrong happened...")
 
     # save (optional)
     if save:
