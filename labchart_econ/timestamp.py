@@ -77,7 +77,7 @@ def plt_ifi(t_frame: np.ndarray, is_trigframe: np.ndarray = None) -> None:
 
 def get_t_trigframe(t_frame: np.ndarray, intrange: list = None) -> np.ndarray:
     """
-    make a list of triggered frame (True) and untriggered frame (False)
+    get time information about triggered frames
 
     Args:
         t_frame (np.ndarray): t_frame acquired by read_timestamp

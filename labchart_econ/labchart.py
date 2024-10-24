@@ -43,9 +43,9 @@ def read_chtrig(matfilepath: str, ch: int = 0) -> np.ndarray:
     return chtrig, ts
 
 
-def get_t_trig_pulse(chtrig: np.ndarray, ts: np.ndarray, thr: float = 1) -> np.ndarray:
+def get_t_pulse(chtrig: np.ndarray, ts: np.ndarray, thr: float = 1) -> np.ndarray:
     """
-    _summary_
+    get time information about trigger pulse
 
     Args:
         chtrig (np.ndarray): trigger channel
@@ -56,9 +56,9 @@ def get_t_trig_pulse(chtrig: np.ndarray, ts: np.ndarray, thr: float = 1) -> np.n
         np.ndarray: trigger pulse time (1st item) and bool indicating trigger
                     (2nd item; True, trigger; False, not trigger)
     """
-    idx_pulse = np.where(chtrig > thr)[0]
-    idx_trig = np.concatenate(
-        [np.array([idx_pulse[0]]), idx_pulse[np.where(np.diff(idx_pulse) > 1)[0] + 1]]
+    idx_high = np.where(chtrig > thr)[0]
+    idx_pulse = np.concatenate(
+        [np.array([idx_high[0]]), idx_high[np.where(np.diff(idx_high) > 1)[0] + 1]]
     )
-    t_trig = ts[idx_trig]
-    return t_trig, idx_trig
+    t_pulse = ts[idx_pulse]
+    return t_pulse, idx_pulse

@@ -53,7 +53,7 @@ def sync_labchart_econ(
 
     # get t_pulse (time information for trigger pulses)
     chtrig, ts = le.read_chtrig(matfilepath, ch)
-    t_pulse, _ = le.get_t_trig_pulse(chtrig, ts, thr)
+    t_pulse, _ = le.get_t_pulse(chtrig, ts, thr)
 
     # compare numbers between t_trigframe and t_pulse
     n_trigframe = t_trigframe.shape[0]
